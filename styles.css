@@ -447,11 +447,18 @@ footer { background: #050504; padding: 75px 0 25px; border-top: 1px solid var(--
   .news-card { min-height: 390px; }
   .news-card.small { min-height: 300px; }
   .quote-card { min-height: 270px; }
-  .players-viewport { width: 100%; max-width: none; margin-inline: 0; padding-inline: 14px; overflow-x: auto; overflow-y: hidden; scroll-padding-inline: 14px; scroll-snap-type: x mandatory; scroll-behavior: smooth; overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .players-viewport { --mobile-card-width: min(86vw, 340px); width: 100%; max-width: none; margin-inline: 0; padding-inline: calc((100vw - var(--mobile-card-width)) / 2); overflow-x: auto; overflow-y: hidden; scroll-padding-inline: calc((100vw - var(--mobile-card-width)) / 2); scroll-snap-type: x mandatory; scroll-behavior: smooth; overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .players-viewport::-webkit-scrollbar { display: none; }
-  .players-track { width: max-content; gap: 14px; padding-right: 14px; }
-  .player-card { width: min(calc(100vw - 28px), 390px); min-width: min(calc(100vw - 28px), 390px); scroll-snap-align: center; scroll-snap-stop: always; }
-  .player-photo { height: 380px; }
+  .players-track { width: max-content; gap: 12px; padding-right: 0; }
+  .player-card { flex: 0 0 var(--mobile-card-width); width: var(--mobile-card-width); min-width: var(--mobile-card-width); scroll-snap-align: center; scroll-snap-stop: always; border-radius: 22px; }
+  .player-photo { height: clamp(260px, 72vw, 285px); }
+  .player-photo > span { top: 8px; right: 14px; font-size: 4.4rem; color: rgba(255,255,255,.24); }
+  .portrait-shape { width: 68%; height: 86%; bottom: -14px; }
+  .portrait-shape::before { width: 74px; height: 92px; }
+  .player-info { min-height: 102px; padding: 16px 18px; }
+  .player-info small { font-size: .56rem; }
+  .player-info strong { font-size: 1.78rem; margin-top: 6px; }
+  .player-info > span { font-size: .62rem; }
   .games-shell { padding: 26px 18px; border-radius: 28px; }
   .games-top { flex-direction: column; align-items: flex-start; gap: 24px; }
   .game-row { grid-template-columns: 64px 1fr; gap: 12px; padding: 20px 0; }
