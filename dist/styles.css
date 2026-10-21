@@ -234,6 +234,7 @@ footer { background: #050504; padding: 75px 0 25px; border-top: 1px solid var(--
 .newsletter input { width: 100%; padding: 13px 0; color: white; background: transparent; border: 0; outline: 0; font-size: .68rem; }
 .newsletter button { border: 0; background: transparent; color: var(--gold); font-size: 1.2rem; cursor: pointer; }
 .footer-bottom { display: flex; justify-content: space-between; border-top: 1px solid var(--line); margin-top: 55px; padding-top: 22px; color: #6b6a65; font-size: .52rem; letter-spacing: .08em; }
+.developer-credit { color: var(--gold); font-weight: 800; }
 .toast { position: fixed; z-index: 100; bottom: 22px; left: 50%; transform: translate(-50%, 140%); background: var(--cream); color: #111; padding: 14px 20px; border-radius: 999px; font-size: .75rem; font-weight: 800; box-shadow: 0 12px 40px rgba(0,0,0,.3); transition: transform .35s; }
 .toast.show { transform: translate(-50%, 0); }
 
