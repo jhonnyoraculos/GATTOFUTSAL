@@ -1,6 +1,32 @@
 const header = document.querySelector('.site-header');
 const menuButton = document.querySelector('.menu-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
+const isMobileViewport = window.matchMedia('(max-width: 760px)').matches;
+
+if (isMobileViewport) {
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  document.addEventListener('touchstart', event => {
+    const touch = event.touches[0];
+    if (!touch) return;
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchmove', event => {
+    if (event.target instanceof Element && event.target.closest('.players-viewport')) return;
+    const touch = event.touches[0];
+    if (!touch) return;
+    const deltaX = touch.clientX - touchStartX;
+    const deltaY = touch.clientY - touchStartY;
+    if (Math.abs(deltaX) > 8 && Math.abs(deltaX) > Math.abs(deltaY)) event.preventDefault();
+  }, { passive: false });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollX !== 0) window.scrollTo(0, window.scrollY);
+  }, { passive: true });
+}
 
 window.addEventListener('scroll', () => {
   if (header) header.classList.toggle('scrolled', window.scrollY > 24);
