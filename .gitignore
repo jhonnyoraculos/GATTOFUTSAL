@@ -1,0 +1,5 @@
+# Local visual QA artifacts
+qa/
+
+# Deployment archives
+*.tar.gz
