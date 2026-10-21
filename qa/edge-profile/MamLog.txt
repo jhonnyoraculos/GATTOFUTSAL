@@ -1,0 +1,66 @@
+[2026-10-21T11:32:17.325Z] [INFO] ========================================================================================================================
+[2026-10-21T11:32:17.325Z] [INFO] Initializing MAM Client.
+App: com.microsoft.edge 155.0.4283.62
+SDK: 2.4.2.0
+OS: windows 10.0.26200.9711
+DeviceType: Desktop
+Manufacturer: Dell Inc.
+Model: OptiPlex 3000
+Telemetry: yes
+Managed device support: enabled
+[2026-10-21T11:32:17.325Z] [INFO] Telemetry session b43b8dc2-f0a3-471a-a976-20effb86d17c.
+[2026-10-21T11:32:17.325Z] [INFO] ECS client initialized.
+[2026-10-21T11:32:17.326Z] [INFO] Initializing cache (v1).
+[2026-10-21T11:32:17.326Z] [INFO] Started ECS service request processing.
+[2026-10-21T11:32:17.327Z] [INFO] Flight configuration defaults:
+{"924da161-897f-4061-ad83-eca72d58a16e_0":{"source":0,"value":false},"DesktopMAM_Canary":{"source":0,"value":0},"f9fec151-8ff5-437c-a028-0e92e9878d8d_0":{"source":0,"value":false},"f9fec151-8ff5-437c-a028-0e92e9878d8d_1":{"source":0,"value":false}}
+[2026-10-21T11:32:17.327Z] [INFO] Registered Flight Client FlightClientId:6a1b553f-06f8-43f5-8e14-2f7a7e4c3a01 with new flight key 2b882754-9988-4f9d-bfb8-a115083e09d5.
+[2026-10-21T11:32:17.327Z] [INFO] Fetching flight data for flight key 2b882754-9988-4f9d-bfb8-a115083e09d5...
+[2026-10-21T11:32:17.368Z] [INFO] Registered Flight Client FlightClientId:f8bef36d-266f-4a28-b09d-35b578259ed5 with new flight key 47c58fc9-dd2a-41a9-a03b-051ae740c62f.
+[2026-10-21T11:32:17.368Z] [INFO] Registered UserID:f8bef36d-266f-4a28-b09d-35b578259ed5 (TenantID:0be2cd21-c205-4499-8ecf-ed6ecfc16aad) in the Azure public cloud.
+[2026-10-21T11:32:17.368Z] [INFO] Conditional Access is blocked for UserID:f8bef36d-266f-4a28-b09d-35b578259ed5 pre-enrollment; compliance reporting will be accelerated to unblock the user.
+[2026-10-21T11:32:17.368Z] [INFO] Queuing pre-enrollment policy assignment check for UserID:f8bef36d-266f-4a28-b09d-35b578259ed5 to run as soon as possible.
+[2026-10-21T11:32:17.368Z] [INFO] Scheduler background thread starting for UserID:f8bef36d-266f-4a28-b09d-35b578259ed5.
+[2026-10-21T11:32:17.873Z] [INFO] Flight data fetch for flight key 2b882754-9988-4f9d-bfb8-a115083e09d5 succeeded. (EcsCorrelationId:MIRA: 7d290803-4280-a92a-c60d-f3bf8c61b314 CP5P284CA0063 2026-10-21T11:32:18.683Z)
+[2026-10-21T11:32:17.873Z] [INFO] Scheduling next ECS request for flight key 2b882754-9988-4f9d-bfb8-a115083e09d5 at 2026-10-21T12:32:17.872Z.
+[2026-10-21T11:32:17.874Z] [INFO] Application flight configuration updated:
+{"924da161-897f-4061-ad83-eca72d58a16e_0":{"source":0,"value":false},"DesktopMAM_Canary":{"source":1,"value":1},"f9fec151-8ff5-437c-a028-0e92e9878d8d_0":{"source":0,"value":false},"f9fec151-8ff5-437c-a028-0e92e9878d8d_1":{"source":0,"value":false}}
+[2026-10-21T11:32:17.874Z] [INFO] Fetching flight data for flight key 47c58fc9-dd2a-41a9-a03b-051ae740c62f...
+[2026-10-21T11:32:18.044Z] [INFO] Flight data fetch for flight key 47c58fc9-dd2a-41a9-a03b-051ae740c62f succeeded. (EcsCorrelationId:MIRA: 3b9d5b5d-5fb7-8aa0-5c00-d691b0735c38 CP5P284CA0063 2026-10-21T11:32:18.888Z)
+[2026-10-21T11:32:18.044Z] [INFO] Scheduling next ECS request for flight key 47c58fc9-dd2a-41a9-a03b-051ae740c62f at 2026-10-21T12:32:18.044Z.
+[2026-10-21T11:32:18.044Z] [INFO] User flight configuration for UserID:f8bef36d-266f-4a28-b09d-35b578259ed5 updated:
+{"924da161-897f-4061-ad83-eca72d58a16e_0":{"source":0,"value":false},"DesktopMAM_Canary":{"source":1,"value":1},"f9fec151-8ff5-437c-a028-0e92e9878d8d_0":{"source":0,"value":false},"f9fec151-8ff5-437c-a028-0e92e9878d8d_1":{"source":0,"value":false}}
+[2026-10-21T11:32:19.617Z] [INFO] Shutting down.
+[2026-10-21T11:32:19.617Z] [INFO] Stopping ECS service request processing and discarding any remaining scheduled requests...
+[2026-10-21T11:32:19.695Z] [INFO] Stopped ECS service request processing.
+[2026-10-21T11:32:19.701Z] [INFO] Stopping the task scheduler and canceling any outstanding work items...
+[2026-10-21T11:32:47.964Z] [INFO] ========================================================================================================================
+[2026-10-21T11:32:47.964Z] [INFO] Initializing MAM Client.
+App: com.microsoft.edge 155.0.4283.62
+SDK: 2.4.2.0
+OS: windows 10.0.26200.9711
+DeviceType: Desktop
+Manufacturer: Dell Inc.
+Model: OptiPlex 3000
+Telemetry: yes
+Managed device support: enabled
+[2026-10-21T11:32:47.964Z] [INFO] Telemetry session 406f41e8-1939-49e5-bdcf-38fc64d5211e.
+[2026-10-21T11:32:47.964Z] [INFO] ECS client initialized.
+[2026-10-21T11:32:47.964Z] [INFO] Started ECS service request processing.
+[2026-10-21T11:32:47.965Z] [INFO] Restored UserID:f8bef36d-266f-4a28-b09d-35b578259ed5
+TenantID:0be2cd21-c205-4499-8ecf-ed6ecfc16aad
+Azure public cloud
+[2026-10-21T11:32:47.965Z] [INFO] Reinitialized cache (v1).
+[2026-10-21T11:32:47.965Z] [INFO] Flight configuration defaults:
+{"924da161-897f-4061-ad83-eca72d58a16e_0":{"source":0,"value":false},"DesktopMAM_Canary":{"source":0,"value":0},"f9fec151-8ff5-437c-a028-0e92e9878d8d_0":{"source":0,"value":false},"f9fec151-8ff5-437c-a028-0e92e9878d8d_1":{"source":0,"value":false}}
+[2026-10-21T11:32:47.965Z] [INFO] Registered Flight Client FlightClientId:6a1b553f-06f8-43f5-8e14-2f7a7e4c3a01 with new flight key 58953794-0529-407c-a152-11b0e1a2de30.
+[2026-10-21T11:32:47.965Z] [INFO] Scheduler background thread starting for UserID:f8bef36d-266f-4a28-b09d-35b578259ed5.
+[2026-10-21T11:32:47.965Z] [INFO] Fetching flight data for flight key 58953794-0529-407c-a152-11b0e1a2de30...
+[2026-10-21T11:32:47.965Z] [INFO] Registered Flight Client FlightClientId:f8bef36d-266f-4a28-b09d-35b578259ed5 with new flight key b6300402-f6eb-4b33-8ab9-878fddcf9eb1.
+[2026-10-21T11:32:47.965Z] [INFO] Re-queuing pre-enrollment check for UserID:f8bef36d-266f-4a28-b09d-35b578259ed5.
+[2026-10-21T11:32:47.965Z] [INFO] Queuing pre-enrollment policy assignment check for UserID:f8bef36d-266f-4a28-b09d-35b578259ed5 to run as soon as possible.
+[2026-10-21T11:32:47.966Z] [ERROR] The application could not supply an access token on request for UserID:f8bef36d-266f-4a28-b09d-35b578259ed5.
+Reason: 0
+User not found: token fetch aborted.
+[2026-10-21T11:32:47.966Z] [WARNING] Unable to acquire an access token during check for MAM policy assignment for UserID:f8bef36d-266f-4a28-b09d-35b578259ed5.
+[2026-10-21T11:32:47.966Z] [ERROR] An unexpected error occurred during check for MAM policy assignment for UserID:f8bef36d-266f-4a28-b09d-35b578259ed5; the operation will be reattempted after a brief delay on local conditions.

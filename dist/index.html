@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080806">
+  <meta name="description" content="Gatto Futsal — protótipo conceitual de um clube que joga com instinto.">
+  <title>Gatto Futsal — Jogue com instinto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <header class="site-header" id="topo">
+    <a class="brand" href="#inicio" aria-label="Gatto Futsal — início">
+      <img src="assets/gatto-logo.png" alt="Escudo do Gatto Futsal">
+      <span>GATTO<small>FUTSAL</small></span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      <a href="#noticias">Notícias</a>
+      <a href="#elenco">Elenco</a>
+      <a href="#jogos">Jogos</a>
+      <a href="#clube">O clube</a>
+    </nav>
+
+    <a class="glass-button header-cta" href="#ingressos">Ingressos <span>↗</span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="Navegação mobile">
+      <a href="#noticias"><span>01</span>Notícias</a>
+      <a href="#elenco"><span>02</span>Elenco</a>
+      <a href="#jogos"><span>03</span>Jogos</a>
+      <a href="#clube"><span>04</span>O clube</a>
+    </nav>
+    <a class="primary-button" href="#ingressos">Garantir ingresso <span>↗</span></a>
+  </div>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="hero-grid container">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span></span> Temporada 2026</div>
+          <h1>JOGUE COM<br><em>INSTINTO.</em></h1>
+          <p>Velocidade, técnica e a coragem de quem nunca tira os olhos do jogo. Somos Gatto. Somos futsal.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#jogos">Próximos jogos <span>↘</span></a>
+            <a class="text-link" href="#clube">Conheça o clube <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Escudo do Gatto Futsal em destaque">
+          <div class="orbital-line orbital-one"></div>
+          <div class="orbital-line orbital-two"></div>
+          <div class="crest-glow"></div>
+          <img src="assets/gatto-logo.png" alt="Gatto Futsal" class="hero-logo">
+          <div class="floating-tag tag-top glass-panel"><span class="live-dot"></span> EM QUADRA</div>
+          <div class="floating-tag tag-bottom glass-panel">DESDE 2019 <span>✦</span></div>
+        </div>
+
+        <aside class="next-match glass-panel reveal" aria-labelledby="next-match-title">
+          <div class="match-head">
+            <span id="next-match-title">Próxima partida</span>
+            <span class="competition">Liga Nacional</span>
+          </div>
+          <div class="match-body">
+            <div class="club">
+              <img src="assets/gatto-logo.png" alt="">
+              <strong>GAT</strong>
+            </div>
+            <div class="match-center">
+              <time datetime="2026-11-08T19:30:00-03:00">08 NOV<br><strong>19:30</strong></time>
+              <span>ARENA CENTRAL</span>
+            </div>
+            <div class="club rival-crest">
+              <div class="rival-mark" aria-hidden="true">L</div>
+              <strong>LON</strong>
+            </div>
+          </div>
+          <div class="countdown" data-match="2026-11-08T19:30:00-03:00" aria-label="Contagem regressiva para o próximo jogo">
+            <span><b data-days>--</b><small>dias</small></span>
+            <i>:</i>
+            <span><b data-hours>--</b><small>horas</small></span>
+            <i>:</i>
+            <span><b data-minutes>--</b><small>min</small></span>
+          </div>
+          <a href="#ingressos" class="match-link">VER DETALHES <span>↗</span></a>
+        </aside>
+      </div>
+
+      <div class="ticker" aria-label="Destaques do clube">
+        <div class="ticker-track">
+          <span>GATTO FUTSAL <b>✦</b></span><span>PAIXÃO EM QUADRA <b>✦</b></span><span>JOGUE COM INSTINTO <b>✦</b></span>
+          <span>GATTO FUTSAL <b>✦</b></span><span>PAIXÃO EM QUADRA <b>✦</b></span><span>JOGUE COM INSTINTO <b>✦</b></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section news-section" id="noticias">
+      <div class="container">
+        <header class="section-heading reveal">
+          <div><span class="kicker">ÚLTIMAS DO GATTO</span><h2>NOTÍCIAS</h2></div>
+          <a href="#noticias" class="circle-link" aria-label="Ver todas as notícias">↗</a>
+        </header>
+
+        <div class="news-grid">
+          <article class="news-card featured reveal">
+            <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1400&q=85" alt="Jogador de futebol dominando a bola em campo" loading="lazy">
+            <div class="news-overlay"></div>
+            <div class="news-content">
+              <div class="meta"><span>BASTIDORES</span><time datetime="2026-10-18">18 OUT 2026</time></div>
+              <h3>Noite de estreia: Gatto vence e transforma a arena em caldeirão</h3>
+              <a href="#" aria-label="Ler notícia sobre a estreia">Ler matéria <span>↗</span></a>
+            </div>
+          </article>
+
+          <article class="news-card small reveal">
+            <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=1000&q=85" alt="Bola de futebol em campo iluminado" loading="lazy">
+            <div class="news-content">
+              <div class="meta"><span>CLUBE</span><time datetime="2026-10-14">14 OUT</time></div>
+              <h3>Ingressos liberados para o clássico de novembro</h3>
+              <a href="#ingressos">Saiba mais <span>↗</span></a>
+            </div>
+          </article>
+
+          <article class="news-card quote-card glass-panel reveal">
+            <div class="quote-mark">“</div>
+            <blockquote>Quando a arquibancada ruge, a equipe cresce.</blockquote>
+            <div class="quote-author"><span>RM</span><p><strong>RAFA MORAES</strong><small>Técnico</small></p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section squad-section" id="elenco">
+      <div class="container">
+        <header class="section-heading reveal">
+          <div><span class="kicker">CONHEÇA QUEM FAZ A DIFERENÇA</span><h2>NOSSO ELENCO</h2></div>
+          <div class="slider-actions" aria-label="Controles do elenco">
+            <button class="circle-link" data-slide="prev" aria-label="Jogador anterior">←</button>
+            <button class="circle-link" data-slide="next" aria-label="Próximo jogador">→</button>
+          </div>
+        </header>
+      </div>
+
+      <div class="players-viewport container-wide">
+        <div class="players-track">
+          <article class="player-card reveal">
+            <div class="player-photo player-one"><span>07</span><div class="portrait-shape"></div></div>
+            <div class="player-info"><p><small>ALA</small><strong>CAIO<br>MARTINS</strong></p><span>BR</span></div>
+          </article>
+          <article class="player-card reveal">
+            <div class="player-photo player-two"><span>01</span><div class="portrait-shape"></div></div>
+            <div class="player-info"><p><small>GOLEIRO</small><strong>LEO<br>VIEIRA</strong></p><span>BR</span></div>
+          </article>
+          <article class="player-card reveal">
+            <div class="player-photo player-three"><span>10</span><div class="portrait-shape"></div></div>
+            <div class="player-info"><p><small>FIXO</small><strong>NANDO<br>REIS</strong></p><span>BR</span></div>
+          </article>
+          <article class="player-card reveal">
+            <div class="player-photo player-four"><span>14</span><div class="portrait-shape"></div></div>
+            <div class="player-info"><p><small>PIVÔ</small><strong>IGOR<br>LIMA</strong></p><span>BR</span></div>
+          </article>
+          <article class="player-card reveal">
+            <div class="player-photo player-five"><span>22</span><div class="portrait-shape"></div></div>
+            <div class="player-info"><p><small>ALA</small><strong>DAVI<br>COSTA</strong></p><span>BR</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section games-section" id="jogos">
+      <div class="container">
+        <div class="games-shell glass-panel reveal">
+          <div class="games-top">
+            <div><span class="kicker">AGENDA DA TEMPORADA</span><h2>JOGOS</h2></div>
+            <div class="tabs" role="tablist" aria-label="Tipo de jogos">
+              <button role="tab" aria-selected="true" data-tab="proximos">Próximos</button>
+              <button role="tab" aria-selected="false" data-tab="resultados">Resultados</button>
+            </div>
+          </div>
+
+          <div class="games-list" data-panel="proximos">
+            <article class="game-row">
+              <time datetime="2026-11-08"><strong>08</strong><span>NOV<br>DOM</span></time>
+              <div class="game-comp"><span>LIGA NACIONAL</span><small>ARENA CENTRAL · 19:30</small></div>
+              <div class="game-clubs"><strong>GATTO</strong><img src="assets/gatto-logo.png" alt=""><b>×</b><div class="mini-rival">L</div><strong>LONDRINA</strong></div>
+              <a href="#ingressos">INGRESSOS ↗</a>
+            </article>
+            <article class="game-row">
+              <time datetime="2026-11-15"><strong>15</strong><span>NOV<br>DOM</span></time>
+              <div class="game-comp"><span>CAMPEONATO ESTADUAL</span><small>GINÁSIO MUNICIPAL · 18:00</small></div>
+              <div class="game-clubs"><strong>FÊNIX</strong><div class="mini-rival orange">F</div><b>×</b><img src="assets/gatto-logo.png" alt=""><strong>GATTO</strong></div>
+              <a href="#">DETALHES ↗</a>
+            </article>
+            <article class="game-row">
+              <time datetime="2026-11-22"><strong>22</strong><span>NOV<br>DOM</span></time>
+              <div class="game-comp"><span>LIGA NACIONAL</span><small>ARENA CENTRAL · 20:00</small></div>
+              <div class="game-clubs"><strong>GATTO</strong><img src="assets/gatto-logo.png" alt=""><b>×</b><div class="mini-rival blue">A</div><strong>ATLÂNTICO</strong></div>
+              <a href="#ingressos">INGRESSOS ↗</a>
+            </article>
+          </div>
+
+          <div class="games-list" data-panel="resultados" hidden>
+            <article class="game-row">
+              <time datetime="2026-10-18"><strong>18</strong><span>OUT<br>DOM</span></time>
+              <div class="game-comp"><span>LIGA NACIONAL</span><small>ARENA CENTRAL · ENCERRADO</small></div>
+              <div class="game-clubs score"><strong>GATTO</strong><img src="assets/gatto-logo.png" alt=""><b>4—2</b><div class="mini-rival purple">S</div><strong>SERRA</strong></div>
+              <a href="#noticias">RESUMO ↗</a>
+            </article>
+            <article class="game-row">
+              <time datetime="2026-10-11"><strong>11</strong><span>OUT<br>DOM</span></time>
+              <div class="game-comp"><span>CAMPEONATO ESTADUAL</span><small>GINÁSIO DO NORTE · ENCERRADO</small></div>
+              <div class="game-clubs score"><strong>NORTE</strong><div class="mini-rival blue">N</div><b>1—3</b><img src="assets/gatto-logo.png" alt=""><strong>GATTO</strong></div>
+              <a href="#noticias">RESUMO ↗</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section club-section" id="clube">
+      <div class="container club-grid">
+        <div class="club-copy reveal">
+          <span class="kicker">NOSSA ESSÊNCIA</span>
+          <h2>UM CLUBE.<br>MILHARES DE<br><em>INSTINTOS.</em></h2>
+          <p>O Gatto nasceu para aproximar a quadra da cidade. Um projeto que une alto rendimento, categorias de base e uma torcida que transforma cada jogo em espetáculo.</p>
+          <a class="primary-button" href="#academia">Conheça nossa história <span>↗</span></a>
+        </div>
+        <div class="club-image reveal">
+          <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?auto=format&fit=crop&w=1400&q=85" alt="Equipe de futebol reunida em campo" loading="lazy">
+          <div class="stat stat-one glass-panel"><strong>7</strong><span>TÍTULOS<br>CONQUISTADOS</span></div>
+          <div class="stat stat-two glass-panel"><strong>2019</strong><span>ANO DE<br>FUNDAÇÃO</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="academy-section" id="academia">
+      <div class="academy-bg"></div>
+      <div class="container academy-content reveal">
+        <div><span class="kicker">GATTO ACADEMY</span><h2>O FUTURO<br>COMEÇA AGORA.</h2></div>
+        <div class="academy-side">
+          <p>Treinos para jovens de 6 a 17 anos com metodologia própria, valores esportivos e muita bola no pé.</p>
+          <a class="primary-button light" href="#contato">Quero fazer parte <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tickets-section" id="ingressos">
+      <div class="container">
+        <div class="ticket-card glass-panel reveal">
+          <div class="ticket-copy">
+            <span class="kicker">PRÓXIMO JOGO EM CASA</span>
+            <h2>SINTA A ARENA<br><em>VIBRAR.</em></h2>
+            <p>Gatto × Londrina — 08 de novembro, às 19h30.</p>
+          </div>
+          <a class="ticket-stub" href="#contato">
+            <span>COMPRAR<br>INGRESSO</span><b>↗</b>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="partners" aria-labelledby="partners-title">
+      <div class="container">
+        <span class="kicker" id="partners-title">PARCEIROS QUE JOGAM JUNTO</span>
+        <div class="partner-row">
+          <span>VORTEX</span><span>NEXA</span><span>▲ PULSE</span><span>BRAVA</span><span>ÓRBITA</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contato">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/gatto-logo.png" alt="Gatto Futsal">
+        <p>RAÇA. TÉCNICA.<br>INSTINTO.</p>
+      </div>
+      <div class="footer-links"><strong>NAVEGUE</strong><a href="#noticias">Notícias</a><a href="#elenco">Elenco</a><a href="#jogos">Jogos</a><a href="#clube">O clube</a></div>
+      <div class="footer-links"><strong>CONECTE-SE</strong><a href="#">Instagram ↗</a><a href="#">YouTube ↗</a><a href="#">TikTok ↗</a></div>
+      <div class="newsletter">
+        <strong>FIQUE POR DENTRO</strong><p>Receba novidades do Gatto.</p>
+        <form><label class="sr-only" for="email">Seu e-mail</label><input id="email" type="email" placeholder="SEU E-MAIL" required><button type="submit" aria-label="Cadastrar e-mail">→</button></form>
+      </div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 GATTO FUTSAL — PROTÓTIPO CONCEITUAL</span><span>DESIGN COM INSTINTO ✦</span></div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite">Cadastro realizado! Bem-vindo à torcida.</div>
+  <script src="script.js"></script>
+</body>
+</html>
