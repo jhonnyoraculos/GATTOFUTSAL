@@ -37,7 +37,80 @@ const heroCopy = document.querySelector('.hero-copy');
 const heroVisual = document.querySelector('.hero-visual');
 const nextMatch = document.querySelector('.next-match');
 const aboutCrest = document.querySelector('.about-crest');
+const aboutCrestLogo = document.querySelector('.about-crest img');
 let scrollFrame = 0;
+
+function prepareFlyingTitles() {
+  if (prefersReducedMotion) return;
+
+  const titles = document.querySelectorAll('.section-heading h2, .games-top h2');
+  const titleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('letters-landed');
+      titleObserver.unobserve(entry.target);
+    });
+  }, { threshold: .45, rootMargin: '0px 0px -8% 0px' });
+
+  titles.forEach((title, titleIndex) => {
+    const label = title.textContent.trim();
+    title.textContent = '';
+    title.classList.add('fly-title');
+    title.setAttribute('aria-label', label);
+
+    let letterIndex = 0;
+    label.split(/\s+/).forEach((word, wordIndex, words) => {
+      const wordElement = document.createElement('span');
+      wordElement.className = 'fly-word';
+      wordElement.setAttribute('aria-hidden', 'true');
+
+      [...word].forEach(character => {
+        const letter = document.createElement('span');
+        const direction = (letterIndex + titleIndex) % 2 === 0 ? -1 : 1;
+        const travel = Math.min(window.innerWidth * .72, 820) + (letterIndex % 3) * 90;
+        letter.className = 'fly-letter';
+        letter.textContent = character;
+        letter.style.setProperty('--fly-x', `${direction * travel}px`);
+        letter.style.setProperty('--fly-y', `${((letterIndex % 5) - 2) * 54}px`);
+        letter.style.setProperty('--fly-r', `${direction * (95 + (letterIndex % 4) * 36)}deg`);
+        letter.style.setProperty('--fly-delay', `${letterIndex * 42}ms`);
+        wordElement.appendChild(letter);
+        letterIndex += 1;
+      });
+
+      title.appendChild(wordElement);
+      if (wordIndex < words.length - 1) title.appendChild(document.createTextNode(' '));
+    });
+
+    titleObserver.observe(title);
+  });
+}
+
+function launchScreenBall() {
+  const ball = document.createElement('div');
+  ball.className = 'screen-ball';
+  ball.setAttribute('aria-hidden', 'true');
+  ball.innerHTML = '<span>⚽</span>';
+  document.body.appendChild(ball);
+  requestAnimationFrame(() => requestAnimationFrame(() => ball.classList.add('is-flying')));
+  ball.addEventListener('animationend', event => {
+    if (event.target === ball) ball.remove();
+  });
+}
+
+prepareFlyingTitles();
+
+if (!prefersReducedMotion) {
+  const ballTrigger = document.querySelector('#elenco');
+  if (ballTrigger) {
+    const ballObserver = new IntersectionObserver((entries) => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      launchScreenBall();
+      ballObserver.disconnect();
+    }, { threshold: .2 });
+    ballObserver.observe(ballTrigger);
+  }
+}
 
 function updateScrollScene() {
   scrollFrame = 0;
@@ -77,14 +150,34 @@ window.addEventListener('resize', updateScrollScene);
 updateScrollScene();
 
 if (heroLogo && !prefersReducedMotion) {
-  heroLogo.addEventListener('click', () => {
+  const spinCrest = () => {
     heroLogo.classList.remove('is-spinning');
     void heroLogo.offsetWidth;
     heroLogo.classList.add('is-spinning');
+  };
+
+  heroLogo.addEventListener('click', () => {
+    spinCrest();
   });
   heroLogo.addEventListener('animationend', event => {
     if (event.animationName === 'crestSurprise') heroLogo.classList.remove('is-spinning');
   });
+
+  const crestIntroObserver = new IntersectionObserver((entries) => {
+    if (!entries.some(entry => entry.isIntersecting)) return;
+    window.setTimeout(spinCrest, 650);
+    crestIntroObserver.disconnect();
+  }, { threshold: .55 });
+  crestIntroObserver.observe(heroLogo);
+}
+
+if (aboutCrestLogo && !prefersReducedMotion) {
+  const aboutCrestObserver = new IntersectionObserver((entries) => {
+    if (!entries.some(entry => entry.isIntersecting)) return;
+    aboutCrestLogo.classList.add('is-spinning');
+    aboutCrestObserver.disconnect();
+  }, { threshold: .6 });
+  aboutCrestObserver.observe(aboutCrestLogo);
 }
 
 const motionItems = document.querySelectorAll('.game-row, .partner-row span, .purpose-list > div');
