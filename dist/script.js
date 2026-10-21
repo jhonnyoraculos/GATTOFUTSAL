@@ -38,6 +38,7 @@ const heroVisual = document.querySelector('.hero-visual');
 const nextMatch = document.querySelector('.next-match');
 const aboutCrest = document.querySelector('.about-crest');
 const aboutCrestLogo = document.querySelector('.about-crest img');
+const isMobileMotion = window.matchMedia('(max-width: 760px)').matches;
 let scrollFrame = 0;
 
 function prepareFlyingTitles() {
@@ -98,9 +99,47 @@ function launchScreenBall() {
   });
 }
 
+function spinHeroCrest() {
+  if (!heroLogo) return;
+  heroLogo.classList.remove('is-spinning');
+  void heroLogo.offsetWidth;
+  heroLogo.classList.add('is-spinning');
+}
+
+function launchBallAtCrest() {
+  if (!heroLogo) return;
+
+  const crestRect = heroLogo.getBoundingClientRect();
+  const ballSize = window.innerWidth <= 480 ? 58 : 74;
+  const hitX = Math.max(40, Math.min(window.innerWidth - ballSize, crestRect.left + crestRect.width * .26 - ballSize / 2));
+  const hitY = Math.max(110, Math.min(window.innerHeight - ballSize - 18, crestRect.top + crestRect.height * .3 - ballSize / 2));
+  const startY = Math.max(120, hitY - Math.min(190, window.innerHeight * .22));
+  const ball = document.createElement('div');
+  ball.className = 'screen-ball crest-strike';
+  ball.setAttribute('aria-hidden', 'true');
+  ball.innerHTML = '<span>⚽</span>';
+  ball.style.setProperty('--strike-start-y', `${startY}px`);
+  ball.style.setProperty('--strike-hit-x', `${hitX}px`);
+  ball.style.setProperty('--strike-hit-y', `${hitY}px`);
+  document.body.appendChild(ball);
+
+  const impactTimer = window.setTimeout(() => {
+    heroLogo.classList.add('is-hit');
+    spinHeroCrest();
+  }, 980);
+
+  requestAnimationFrame(() => requestAnimationFrame(() => ball.classList.add('is-striking')));
+  ball.addEventListener('animationend', event => {
+    if (event.target !== ball) return;
+    window.clearTimeout(impactTimer);
+    heroLogo.classList.remove('is-hit');
+    ball.remove();
+  });
+}
+
 prepareFlyingTitles();
 
-if (!prefersReducedMotion) {
+if (!prefersReducedMotion && !isMobileMotion) {
   const ballTrigger = document.querySelector('#elenco');
   if (ballTrigger) {
     const ballObserver = new IntersectionObserver((entries) => {
@@ -150,14 +189,8 @@ window.addEventListener('resize', updateScrollScene);
 updateScrollScene();
 
 if (heroLogo && !prefersReducedMotion) {
-  const spinCrest = () => {
-    heroLogo.classList.remove('is-spinning');
-    void heroLogo.offsetWidth;
-    heroLogo.classList.add('is-spinning');
-  };
-
   heroLogo.addEventListener('click', () => {
-    spinCrest();
+    spinHeroCrest();
   });
   heroLogo.addEventListener('animationend', event => {
     if (event.animationName === 'crestSurprise') heroLogo.classList.remove('is-spinning');
@@ -165,9 +198,9 @@ if (heroLogo && !prefersReducedMotion) {
 
   const crestIntroObserver = new IntersectionObserver((entries) => {
     if (!entries.some(entry => entry.isIntersecting)) return;
-    window.setTimeout(spinCrest, 650);
+    window.setTimeout(isMobileMotion ? launchBallAtCrest : spinHeroCrest, isMobileMotion ? 420 : 650);
     crestIntroObserver.disconnect();
-  }, { threshold: .55 });
+  }, { threshold: isMobileMotion ? .18 : .55 });
   crestIntroObserver.observe(heroLogo);
 }
 
@@ -243,8 +276,19 @@ document.querySelectorAll('[data-tab]').forEach(button => {
 const playerViewport = document.querySelector('.players-viewport');
 document.querySelectorAll('[data-slide]').forEach(button => {
   button.addEventListener('click', () => {
-    const amount = Math.min(330, playerViewport.clientWidth * .75);
-    playerViewport.scrollBy({ left: button.dataset.slide === 'next' ? amount : -amount, behavior: 'smooth' });
+    if (!playerViewport) return;
+    const cards = [...playerViewport.querySelectorAll('.player-card')];
+    if (!cards.length) return;
+    const viewportCenter = playerViewport.scrollLeft + playerViewport.clientWidth / 2;
+    const currentIndex = cards.reduce((bestIndex, card, index) => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const bestCard = cards[bestIndex];
+      const bestCenter = bestCard.offsetLeft + bestCard.offsetWidth / 2;
+      return Math.abs(cardCenter - viewportCenter) < Math.abs(bestCenter - viewportCenter) ? index : bestIndex;
+    }, 0);
+    const direction = button.dataset.slide === 'next' ? 1 : -1;
+    const targetIndex = Math.max(0, Math.min(cards.length - 1, currentIndex + direction));
+    cards[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   });
 });
 
