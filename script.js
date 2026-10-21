@@ -29,6 +29,99 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(item => observer.observe(item));
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const root = document.documentElement;
+const hero = document.querySelector('.hero');
+const heroLogo = document.querySelector('.hero-logo');
+const heroCopy = document.querySelector('.hero-copy');
+const heroVisual = document.querySelector('.hero-visual');
+const nextMatch = document.querySelector('.next-match');
+const aboutCrest = document.querySelector('.about-crest');
+let scrollFrame = 0;
+
+function updateScrollScene() {
+  scrollFrame = 0;
+  const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  const pageProgress = Math.min(1, window.scrollY / maxScroll);
+  root.style.setProperty('--scroll-progress', pageProgress.toFixed(4));
+
+  if (!prefersReducedMotion && hero) {
+    const heroProgress = Math.min(1, Math.max(0, window.scrollY / Math.max(1, hero.offsetHeight)));
+    if (heroLogo) {
+      heroLogo.style.setProperty('--hero-scroll-y', `${heroProgress * 82}px`);
+      heroLogo.style.setProperty('--hero-scroll-rotate', `${heroProgress * 24}deg`);
+      heroLogo.style.setProperty('--hero-scroll-scale', `${1 - heroProgress * .12}`);
+    }
+    if (heroCopy) {
+      heroCopy.style.setProperty('--hero-copy-y', `${heroProgress * -38}px`);
+      heroCopy.style.setProperty('--hero-copy-opacity', `${1 - heroProgress * .42}`);
+    }
+    if (heroVisual) {
+      heroVisual.style.setProperty('--hero-glow', `${1 + heroProgress * .35}`);
+      heroVisual.style.setProperty('--hero-glow-opacity', `${.55 - heroProgress * .22}`);
+    }
+    if (nextMatch) nextMatch.style.setProperty('--match-x', `${heroProgress * 28}px`);
+  }
+
+  if (!prefersReducedMotion && aboutCrest) {
+    const rect = aboutCrest.getBoundingClientRect();
+    const centerOffset = (window.innerHeight / 2 - (rect.top + rect.height / 2)) / window.innerHeight;
+    aboutCrest.style.transform = `rotateY(${centerOffset * 5}deg) rotateX(${centerOffset * -3}deg)`;
+  }
+}
+
+window.addEventListener('scroll', () => {
+  if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollScene);
+}, { passive: true });
+window.addEventListener('resize', updateScrollScene);
+updateScrollScene();
+
+if (heroLogo && !prefersReducedMotion) {
+  heroLogo.addEventListener('click', () => {
+    heroLogo.classList.remove('is-spinning');
+    void heroLogo.offsetWidth;
+    heroLogo.classList.add('is-spinning');
+  });
+  heroLogo.addEventListener('animationend', event => {
+    if (event.animationName === 'crestSurprise') heroLogo.classList.remove('is-spinning');
+  });
+}
+
+const motionItems = document.querySelectorAll('.game-row, .partner-row span, .purpose-list > div');
+const motionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('motion-in');
+      motionObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: .16 });
+motionItems.forEach((item, index) => {
+  item.classList.add('motion-item');
+  item.style.setProperty('--motion-delay', `${(index % 5) * 70}ms`);
+  motionObserver.observe(item);
+});
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const element = entry.target;
+    const end = Number(element.dataset.count);
+    const start = Number(element.dataset.start || 0);
+    const duration = 1100;
+    const started = performance.now();
+    function count(now) {
+      const progress = Math.min(1, (now - started) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      element.textContent = Math.round(start + (end - start) * eased);
+      if (progress < 1) requestAnimationFrame(count);
+    }
+    requestAnimationFrame(count);
+    counterObserver.unobserve(element);
+  });
+}, { threshold: .65 });
+document.querySelectorAll('[data-count]').forEach(element => counterObserver.observe(element));
+
 const countdown = document.querySelector('.countdown');
 function updateCountdown() {
   const end = new Date(countdown.dataset.match).getTime();
