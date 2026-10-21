@@ -198,9 +198,9 @@ if (heroLogo && !prefersReducedMotion) {
 
   const crestIntroObserver = new IntersectionObserver((entries) => {
     if (!entries.some(entry => entry.isIntersecting)) return;
-    window.setTimeout(launchBallAtCrest, isMobileMotion ? 420 : 650);
+    window.setTimeout(launchBallAtCrest, isMobileMotion ? 140 : 650);
     crestIntroObserver.disconnect();
-  }, { threshold: isMobileMotion ? .18 : .55 });
+  }, { threshold: isMobileMotion ? .62 : .55 });
   crestIntroObserver.observe(heroLogo);
 }
 
