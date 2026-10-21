@@ -3,7 +3,7 @@ const menuButton = document.querySelector('.menu-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
 
 window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 24);
+  if (header) header.classList.toggle('scrolled', window.scrollY > 24);
 }, { passive: true });
 
 function setMenu(open) {
@@ -14,8 +14,10 @@ function setMenu(open) {
   document.body.classList.toggle('menu-open', open);
 }
 
-menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
-mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+if (menuButton && mobileMenu) {
+  menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+}
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -38,8 +40,10 @@ function updateCountdown() {
   countdown.querySelector('[data-hours]').textContent = String(hours).padStart(2, '0');
   countdown.querySelector('[data-minutes]').textContent = String(minutes).padStart(2, '0');
 }
-updateCountdown();
-setInterval(updateCountdown, 60000);
+if (countdown) {
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+}
 
 document.querySelectorAll('[data-tab]').forEach(button => {
   button.addEventListener('click', () => {
@@ -60,9 +64,11 @@ document.querySelectorAll('[data-slide]').forEach(button => {
 
 const form = document.querySelector('.newsletter form');
 const toast = document.querySelector('.toast');
-form.addEventListener('submit', event => {
-  event.preventDefault();
-  toast.classList.add('show');
-  form.reset();
-  setTimeout(() => toast.classList.remove('show'), 3200);
-});
+if (form && toast) {
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    toast.classList.add('show');
+    form.reset();
+    setTimeout(() => toast.classList.remove('show'), 3200);
+  });
+}
