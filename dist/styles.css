@@ -42,10 +42,18 @@ img { display: block; max-width: 100%; }
 
 .site-header { position: fixed; z-index: 50; top: 18px; left: 50%; transform: translateX(-50%); width: min(1180px, calc(100% - 32px)); height: 72px; display: flex; align-items: center; justify-content: space-between; padding: 10px 12px 10px 16px; border: 1px solid rgba(255,255,255,.13); border-radius: 22px; background: rgba(10,10,8,.68); backdrop-filter: blur(24px) saturate(150%); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 18px 50px rgba(0,0,0,.25); transition: top .3s, background .3s; }
 .site-header.scrolled { top: 8px; background: rgba(7,7,6,.88); }
-.brand { display: flex; align-items: center; gap: 9px; }
-.brand img { width: 43px; height: 48px; object-fit: contain; }
-.brand > span { font-family: var(--display); letter-spacing: .06em; line-height: .82; font-size: 1.12rem; }
-.brand small { display: block; color: var(--gold); font-family: var(--body); font-size: .42rem; letter-spacing: .36em; margin-top: 7px; }
+.brand { display: flex; align-items: center; gap: 9px; position: relative; isolation: isolate; overflow: hidden; margin-left: -3px; padding: 4px 10px 4px 3px; border-radius: 16px; }
+.brand::before { content: ""; position: absolute; z-index: -1; inset: 0; background: radial-gradient(circle at 23% 50%, rgba(246,185,31,.18), transparent 43%); opacity: 0; transform: scale(.72); transition: opacity .38s ease, transform .48s cubic-bezier(.2,.8,.2,1); }
+.brand::after { content: ""; position: absolute; z-index: 3; top: -55%; left: -42%; width: 28px; height: 210%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.48), transparent); transform: rotate(18deg) translateX(0); opacity: 0; pointer-events: none; }
+.brand img { width: 43px; height: 48px; object-fit: contain; transform-origin: 50% 72%; transition: filter .35s ease; }
+.brand > span { position: relative; z-index: 2; font-family: var(--display); letter-spacing: .06em; line-height: .82; font-size: 1.12rem; transition: transform .38s cubic-bezier(.2,.8,.2,1), letter-spacing .38s ease, text-shadow .38s ease; }
+.brand small { display: block; color: var(--gold); font-family: var(--body); font-size: .42rem; letter-spacing: .36em; margin-top: 7px; transition: letter-spacing .42s cubic-bezier(.2,.8,.2,1), color .3s ease; }
+.brand:hover::before, .brand:focus-visible::before { opacity: 1; transform: scale(1); }
+.brand:hover::after, .brand:focus-visible::after { animation: brandSheen .72s ease-out; }
+.brand:hover img, .brand:focus-visible img { animation: brandCrestHover .68s cubic-bezier(.2,.9,.2,1); filter: drop-shadow(0 0 11px rgba(246,185,31,.62)); }
+.brand:hover > span, .brand:focus-visible > span { transform: translateX(3px); letter-spacing: .095em; text-shadow: 0 0 18px rgba(255,255,255,.18); }
+.brand:hover small, .brand:focus-visible small { color: var(--gold-bright); letter-spacing: .5em; }
+.brand:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .desktop-nav { display: flex; align-items: center; gap: 34px; }
 .desktop-nav a { color: #d7d5cc; font-size: .74rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; position: relative; }
 .desktop-nav a::after { content: ""; position: absolute; height: 2px; background: var(--gold); left: 0; right: 100%; bottom: -8px; transition: right .25s; }
@@ -233,6 +241,17 @@ footer { background: #050504; padding: 75px 0 25px; border-top: 1px solid var(--
 .reveal.in-view { opacity: 1; transform: none; }
 @keyframes hover { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-12px) rotate(1deg); } }
 @keyframes ticker { to { transform: translateX(-50%); } }
+@keyframes brandCrestHover {
+  0% { transform: translateY(0) rotate(0) scale(1); }
+  42% { transform: translateY(-4px) rotate(-9deg) scale(1.12); }
+  68% { transform: translateY(-1px) rotate(4deg) scale(1.07); }
+  100% { transform: translateY(-2px) rotate(0) scale(1.08); }
+}
+@keyframes brandSheen {
+  0% { left: -42%; opacity: 0; }
+  18% { opacity: .7; }
+  100% { left: 118%; opacity: 0; }
+}
 
 @media (max-width: 1000px) {
   .desktop-nav, .header-cta { display: none; }
