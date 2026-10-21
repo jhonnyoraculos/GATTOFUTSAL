@@ -82,8 +82,8 @@ img { display: block; max-width: 100%; }
 .hero-actions { display: flex; gap: 24px; align-items: center; }
 .hero-visual { position: relative; min-height: 630px; display: grid; place-items: center; perspective: 1400px; }
 .hero-visual::after { content: ""; position: absolute; z-index: 1; width: 58%; height: 24%; bottom: 10%; border-radius: 50%; background: rgba(246,185,31,.22); filter: blur(48px); transform: scale(var(--hero-glow, 1)); opacity: var(--hero-glow-opacity, .55); transition: opacity .2s linear; pointer-events: none; }
-.hero-logo { --hero-scroll-y: 0px; --hero-scroll-rotate: 0deg; --hero-scroll-scale: 1; position: relative; z-index: 2; width: min(470px, 90%); max-height: 610px; object-fit: contain; filter: drop-shadow(0 25px 70px rgba(0,0,0,.5)); animation: hover 6s ease-in-out infinite; transform-style: preserve-3d; backface-visibility: visible; will-change: transform, filter; cursor: pointer; }
-.hero-logo:hover { animation: crestSurprise 1.05s cubic-bezier(.16,.84,.24,1) both; filter: drop-shadow(0 20px 50px rgba(246,185,31,.38)); }
+.hero-logo { --hero-scroll-y: 0px; --hero-scroll-rotate: 0deg; --hero-scroll-scale: 1; position: relative; z-index: 2; width: min(470px, 90%); max-height: 610px; object-fit: contain; filter: drop-shadow(0 25px 70px rgba(0,0,0,.5)); animation: hover 6s ease-in-out infinite; translate: 0 0; scale: 1; transition: translate .35s cubic-bezier(.2,.8,.2,1), scale .35s cubic-bezier(.2,.8,.2,1), filter .35s ease; transform-style: preserve-3d; backface-visibility: visible; will-change: transform, filter; cursor: pointer; }
+.hero-logo:hover { animation: hover 6s ease-in-out infinite; translate: 0 -9px; scale: 1.035; filter: drop-shadow(0 34px 30px rgba(0,0,0,.62)) drop-shadow(0 0 26px rgba(246,185,31,.46)) brightness(1.06) saturate(1.08); }
 .hero-logo.is-spinning { animation: crestSurprise 1.05s cubic-bezier(.16,.84,.24,1) both; }
 .hero-logo.is-hit { filter: drop-shadow(0 0 34px rgba(255,211,78,.92)) drop-shadow(0 22px 55px rgba(246,185,31,.5)); }
 .crest-glow { position: absolute; width: 400px; height: 400px; border-radius: 50%; background: rgba(246,185,31,.18); filter: blur(60px); }
